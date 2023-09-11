@@ -22,8 +22,8 @@ vector<int>color(N,0);
 vector<int>time_in(N),time_out(N);
 int dfs_timer=0;
 void dfs(int parent){
-   cout<<parent<<" ";
-   // color[parent]=1;
+   //cout<<parent<<" ";
+    color[parent]=1;
     time_in[parent]=dfs_timer++;
     for(auto child:adj[parent]){
         if(color[child]==0){
