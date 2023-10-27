@@ -68,4 +68,4 @@ int main()
     if (d[i][k] + d[k][j] < d[i][j] - EPS)//here EPS is the error.
                                         //Which is eccepted for this problem.
     d[i][j] = d[i][k] + d[k][j]; 
-/*
+*/
