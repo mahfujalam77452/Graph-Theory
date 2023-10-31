@@ -2,8 +2,9 @@ class TreeAncestor {
 public:
     vector<vector<int>> jump;
     int size;
+// We can see the anather implementation of Binary Lifing  in LCA part.
     TreeAncestor(int n, vector<int>& parent) {
-        size = logb(n) + 1;
+        size = logb(n) + 1;//
         jump = vector<vector<int>> (n, vector<int> (size, -1));
         for (int i = 0; i < n; i++)
         jump[i][0] = parent[i];
