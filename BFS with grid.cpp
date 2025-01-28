@@ -24,7 +24,7 @@ memset(visi,0,sizeof(visi));
         q.pop();
         for(int i=0;i<4;i++){//this code will fun till 8 if were use 8 direction.
             int tx=t.first+fx[i];
-            int ty=t.second+fx[i];
+            int ty=t.second+fy[i];
             if(valid(tx,ty)){
                 visi[tx][ty]=1;
                 dist[tx][ty]=dist[t.first][t.second]+1;
