@@ -1,6 +1,6 @@
 #define valid(tx,ty) tx>=0 and tx<row and ty>=0 and ty<col and cell[tx][ty]!=-1 and vis[tx][ty]==0
-int fx[]={1,-1,0,0}//direction array ;
-int fy[]={0,0,1,-1}//it is used here while we are able to move in 4 direction.
+int fx[]={1,-1,0,0};//direction array ;
+int fy[]={0,0,1,-1};//it is used here while we are able to move in 4 direction.
 //for 8 direction we can use this direction array.
 /*
 int fx[]={+0,+0,+1,-1,-1,+1,-1,+1};
@@ -16,15 +16,15 @@ memset(visi,0,sizeof(visi));
 
     visi[sx][sy]=1;
     dist[sx][sy]=0;
-    queue<pari<int,int>q;
+    queue<pair<int,int>q;
     q.push({sx,sy});
     while(!q.empty())
     {
         auto t=q.front();
         q.pop();
         for(int i=0;i<4;i++){//this code will fun till 8 if were use 8 direction.
-            tx=t.first+fx[i];
-            ty=t.second+fx[i];
+            int tx=t.first+fx[i];
+            int ty=t.second+fx[i];
             if(valid(tx,ty)){
                 visi[tx][ty]=1;
                 dist[tx][ty]=dist[t.first][t.second]+1;
