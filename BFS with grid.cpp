@@ -16,7 +16,7 @@ memset(visi,0,sizeof(visi));
 
     visi[sx][sy]=1;
     dist[sx][sy]=0;
-    queue<pair<int,int>q;
+    queue<pair<int,int>>q;
     q.push({sx,sy});
     while(!q.empty())
     {
