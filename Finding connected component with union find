@@ -1,35 +1,44 @@
-/*we can find the number of connected component 
-in directed graph with below code*/
-#include<bits/stdc++.h>
+#include <bits/stdc++.h>
 using namespace std;
 #define sz 10000
 int parant[sz];
-int size[sz];
+int sizeArr[sz]; // avoid conflict with std::size
+
 void make(int v){
-    parant[v]=v;
-    size[v]=1;
+    parant[v] = v;
+    sizeArr[v] = 1;
 }
+
 int find(int n){
-    if(parant[n]==n)return n;
-    return parant[n]=find(parant[n]);
+    if(parant[n] == n) return n;
+    return parant[n] = find(parant[n]); // path compression
 }
-void Union(int a,int b){
-    if(size[a]<size[b])swap(a,b);
-    parant[b]=a;
-    size[a]+=size[b];
-}
-int main()
-{
-    int n,k;
-    cin>>n>>k;
-    for(int i=1;i<=n;i++)make(i);
-    while(k--){
-        int u,v;
-        cin>>u>>v;
-        Union(u,v);
+
+void Union(int a, int b){
+    a = find(a);
+    b = find(b);
+    if(a != b){ // only union if in different sets
+        if(sizeArr[a] < sizeArr[b]) swap(a, b);
+        parant[b] = a;
+        sizeArr[a] += sizeArr[b];
     }
-    int connected_ct=0;
-    for(int i=1;i<=n;i++)if(find(i)==i)connected_ct++;
-    cout<<connected_ct<<endl;
+}
+
+int main(){
+    int n, k;
+    cin >> n >> k;
+    for(int i = 1; i <= n; i++) make(i);
+
+    while(k--){
+        int u, v;
+        cin >> u >> v;
+        Union(u, v);
+    }
+
+    int connected_ct = 0;
+    for(int i = 1; i <= n; i++) 
+        if(find(i) == i) connected_ct++;
+
+    cout << connected_ct << endl;
     return 0;
 }
